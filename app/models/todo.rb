@@ -6,11 +6,11 @@ class Todo < ApplicationRecord
   validates :content, presence: true
   validates :done, inclusion: { in: [true, false] }
   
-  after_initialize :set.default, if: :new_record?
+  after_initialize :set_default, if: :new_record?
   
   private
   
-  def set.default
+  def set_default
     self.done = false if self.done.blank?
   end
 end
